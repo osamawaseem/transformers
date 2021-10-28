@@ -537,6 +537,8 @@ def main():
 
     def compute_metrics(preds, labels):
         decoded_preds = tokenizer.batch_decode(preds, skip_special_tokens=True)
+        decoded_preds_with_special_tokens = tokenizer.batch_decode(preds[:3], skip_special_tokens=True)
+        logger.info("\n\n".join(decoded_preds_with_special_tokens))
         decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True)
 
         # Some simple post-processing
